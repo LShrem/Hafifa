@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
-import { UserContext } from "../App";
+import { WeatherContext } from "../App";
 import api from "../api";
 import "../styles/Home.css";
 import WeatherCard from "../components/WeatherCard";
 
 export default function Home() {
   const [cities, setCities] = useState([]);
-  const reactContext = useContext(UserContext);
+  const reactContext = useContext(WeatherContext);
   const [history, setHistory] = reactContext.history;
   const [selectedCity, setSelectedCity] = reactContext.selectedCity;
   const [selectedCardCity, setSelectedCardCity] = useState(selectedCity.city);

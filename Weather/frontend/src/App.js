@@ -8,7 +8,7 @@ import History from "./pages/History";
 import "./App.css";
 import api from "./api";
 
-export const UserContext = createContext();
+export const WeatherContext = createContext();
 
 function App() {
   const location = useLocation();
@@ -34,7 +34,7 @@ function App() {
   };
 
   return (
-    <UserContext.Provider
+    <WeatherContext.Provider
       value={{
         history: [history, setHistory],
         selectedCity: [selectedCity, setSelectedCity],
@@ -52,7 +52,7 @@ function App() {
           </Routes>
         </div>
       </div>
-    </UserContext.Provider>
+    </WeatherContext.Provider>
   );
 }
 

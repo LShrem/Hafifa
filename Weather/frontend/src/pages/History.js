@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import "../styles/History.css";
-import { UserContext } from "../App";
+import { WeatherContext } from "../App";
 
 export default function History() {
-  const reactContext = useContext(UserContext);
+  const reactContext = useContext(WeatherContext);
   const [history, setHistory] = reactContext.history;
   const [selectedCity, setSelectedCity] = reactContext.selectedCity;
   const SELECTED_CHOICE = "ביטול בחירה";
