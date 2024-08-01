@@ -7,7 +7,7 @@ export const WeatherContext = createContext({
   weather: [[], () => {}],
 });
 
-export const WeatherProvider = ({ children }) => {
+export const WeatherProvider = ({ children }) => { 
   const [history, setHistory] = useState([]);
   const [selectedCity, setSelectedCity] = useState({
     country: "Israel",
