@@ -38,19 +38,27 @@ export default function MadorModal(props) {
     props.setShowModal(false);
   };
 
-  setInterval(() => {
-    const now = new Date();
-    const hours = now.getHours().toString().padStart(2, "0");
-    const minutes = now.getMinutes().toString().padStart(2, "0");
-    const seconds = now.getSeconds().toString().padStart(2, "0");
-    const day = now.getDate().toString().padStart(2, "0");
-    const month = (now.getMonth() + 1).toString().padStart(2, "0");
-    const year = now.getFullYear();
-    const dateString = `${day}/${month}/${year}`;
-    const timeString = `${hours}:${minutes}:${seconds}`;
-    const dateTimeString = `${dateString} ${timeString}`;
-    setCurrentTime(dateTimeString);
-  }, 1000);
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, "0");
+      const minutes = now.getMinutes().toString().padStart(2, "0");
+      const seconds = now.getSeconds().toString().padStart(2, "0");
+      const day = now.getDate().toString().padStart(2, "0");
+      const month = (now.getMonth() + 1).toString().padStart(2, "0");
+      const year = now.getFullYear();
+      const dateString = `${day}/${month}/${year}`;
+      const timeString = `${hours}:${minutes}:${seconds}`;
+      const dateTimeString = `${dateString} ${timeString}`;
+      setCurrentTime(dateTimeString);
+    };
+
+    const intervalId = setInterval(updateTime, 1000);
+
+    updateTime();
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   const handleOrderChange = (event) => {
     setOrderPick(event.target.value);
@@ -214,10 +222,10 @@ export default function MadorModal(props) {
     if (deleteSoldiersButton) {
       if (Object.keys(selectedSoldiers).length > 0) {
         deleteSoldiersButton.style.backgroundColor = "purple";
-        setDeleteButtonDisabled(false); 
+        setDeleteButtonDisabled(false);
       } else {
         deleteSoldiersButton.style.backgroundColor = "lightgrey";
-        setDeleteButtonDisabled(true); 
+        setDeleteButtonDisabled(true);
       }
     }
   }, [selectedSoldiers]);
@@ -237,7 +245,7 @@ export default function MadorModal(props) {
   const saveChanges = async () => {
     await api().updateMadorSoldiers(soldiers);
     closeModal();
-  }
+  };
 
   return (
     <Modal

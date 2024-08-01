@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "../styles/History.css";
-import { WeatherContext } from "../App";
+import { WeatherContext } from "../components/WeatherContext";
 
 export default function History() {
   const reactContext = useContext(WeatherContext);

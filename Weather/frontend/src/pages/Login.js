@@ -65,7 +65,7 @@ export default function Login() {
       try {
         const response = await api().login(userInfo);
 
-        if (response.status = 200) {
+        if (response.status === 200) {
           const user = await response.data;
           localStorage.setItem("userInfo", JSON.stringify(user));
           navigation();

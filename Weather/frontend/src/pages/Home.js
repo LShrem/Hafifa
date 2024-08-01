@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { WeatherContext } from "../App";
+import { WeatherContext } from "../components/WeatherContext";
 import api from "../api";
 import "../styles/Home.css";
 import WeatherCard from "../components/WeatherCard";
